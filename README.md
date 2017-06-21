@@ -4,7 +4,7 @@
 
 ## Install
 ```
-npm install react-account-kit
+npm install react-facebook-account-kit
 
 ```
 
@@ -12,7 +12,7 @@ npm install react-account-kit
 ```js
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AccountKit from 'react-account-kit';
+import AccountKit from 'react-facebook-account-kit';
 
 ReactDOM.render(
     <AccountKit

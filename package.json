@@ -1,5 +1,5 @@
 {
-  "name": "react-accout-kit",
+  "name": "react-facebook-account-kit",
   "version": "0.1.0",
   "description": "Account Kit for React",
   "main": "dist/account-kit.js",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/zsajjad/react-account-kit.git"
+    "url": "git+https://github.com/zsajjad/react-facebook-account-kit.git"
   },
   "keywords": [
     "react",
@@ -26,9 +26,9 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zsajjad/react-account-kit/issues"
+    "url": "https://github.com/zsajjad/react-facebook-account-kit/issues"
   },
-  "homepage": "https://github.com/zsajjad/react-account-kit",
+  "homepage": "https://github.com/zsajjad/react-facebook-account-kit",
   "dependencies": {
     "@types/react": "*",
     "prop-types": "^15.5.0"
