@@ -20,6 +20,9 @@ ReactDOM.render(
       version="v1.0" // Version must be in form v{major}.{minor}
       onResponse={(resp) => console.log(resp)}
       csrf={'csrf token here!'} // Required for security
+      countryCode={'default country code'} // eg. +60
+      phoneNumber={'default phone number'} // eg. 12345678
+      emailAddress={'default email address'} // eg. me@site.com 
     >
       {p => <button {...p}>Initialize Account Kit</button>}
     </AccountKit>,
@@ -38,6 +41,11 @@ ReactDOM.render(
 - ```loginType``` default is ```PHONE```
 - ```disabled``` default is ```false```
 - ```language``` default is ```en_US```
+- ```countryCode``` default country code. default value is ```undefined```
+- ```phoneNumber``` default phone number. default value is ```undefined```
+- ```emailAddress``` default email address. default value is ```undefined```
+*`loginType`* must be set to ```"EMAIL"``` for this to work. 
+
 
 ## Dev Server
 ```
