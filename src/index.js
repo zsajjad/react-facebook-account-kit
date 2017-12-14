@@ -45,8 +45,26 @@ class AccountKit extends React.Component {
     if (this.state.disabled) {
       return;
     }
-    const { onResponse } = this.props;
-    window.AccountKit.login(this.props.loginType, {}, resp => onResponse(resp));
+    const {
+      loginType,
+      onResponse,
+      countryCode,
+      phoneNumber,
+      emailAddress,
+    } = this.props;
+
+    const options = {};
+    if (countryCode) {
+      options.countryCode = countryCode;
+    }
+
+    if (loginType === "PHONE" && phoneNumber) {
+      options.phoneNumber = phoneNumber;
+    } else if (loginType === "EMAIL" && emailAddress) {
+      options.emailAddress = emailAddress;
+    }
+
+    window.AccountKit.login(loginType, options, resp => onResponse(resp));
   }
 
   render() {
@@ -68,7 +86,10 @@ AccountKit.propTypes = {
   onResponse: PropTypes.func.isRequired,
   loginType: PropTypes.oneOf(["PHONE", "EMAIL"]),
   disabled: PropTypes.bool,
-  language: PropTypes.string
+  language: PropTypes.string,
+  countryCode: PropTypes.string,
+  phoneNumber: PropTypes.string,
+  emailAddress: PropTypes.string
 };
 
 AccountKit.defaultProps = {
