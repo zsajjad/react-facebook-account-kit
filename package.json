@@ -1,6 +1,6 @@
 {
   "name": "react-facebook-account-kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Account Kit for React",
   "main": "dist/account-kit.js",
   "scripts": {
