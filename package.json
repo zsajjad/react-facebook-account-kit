@@ -4,8 +4,10 @@
   "description": "Account Kit for React",
   "main": "dist/account-kit.js",
   "scripts": {
-    "start": "export NODE_ENV=development&& webpack-dev-server --config webpack.config.dev.js",
-    "bundle": "export NODE_ENV=production&& webpack -p --config webpack.config.dist.js",
+    "start":
+      "export NODE_ENV=development&& webpack-dev-server --config webpack.config.dev.js",
+    "bundle":
+      "export NODE_ENV=production&& webpack -p --config webpack.config.dist.js",
     "lint": "eslint src/ --fix",
     "clean": "rm -rf node_modules"
   },
@@ -30,7 +32,6 @@
   },
   "homepage": "https://github.com/zsajjad/react-facebook-account-kit",
   "dependencies": {
-    "@types/react": "*",
     "prop-types": "^15.5.0"
   },
   "devDependencies": {
@@ -53,51 +54,13 @@
     "eslint-plugin-react": "6.10.3",
     "jsdom": "9.12.0",
     "mocha": "3.2.0",
-    "react": "^15.5.0",
-    "react-dom": "^15.5.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "webpack": "2.2.1",
     "webpack-dev-server": "2.4.2"
   },
   "peerDependencies": {
-    "react": "^15.5.0",
-    "react-dom": "^15.5.0"
-  },
-  "types": "./index.d.ts",
-  "babel": {
-    "env": {
-      "development": {
-        "presets": [
-          [
-            "es2015",
-            {
-              "modules": false
-            }
-          ],
-          "react"
-        ]
-      },
-      "test": {
-        "presets": [
-          "es2015",
-          "react"
-        ]
-      },
-      "production": {
-        "presets": [
-          [
-            "es2015",
-            {
-              "modules": false
-            }
-          ],
-          "react"
-        ],
-        "plugins": [
-          "transform-react-remove-prop-types",
-          "transform-react-constant-elements",
-          "transform-react-inline-elements"
-        ]
-      }
-    }
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   }
 }
