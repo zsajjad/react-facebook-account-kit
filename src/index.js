@@ -29,11 +29,14 @@ class AccountKit extends React.Component {
   }
 
   onLoad() {
-    const { appId, csrf, version } = this.props;
+    const { appId, csrf, version, debug, display, redirect } = this.props;
     window.AccountKit.init({
       appId,
       state: csrf,
       version,
+      debug,
+      display,
+      redirect,
       fbAppEventsEnabled: false
     });
     this.setState({
@@ -85,7 +88,10 @@ AccountKit.propTypes = {
   children: PropTypes.func.isRequired,
   onResponse: PropTypes.func.isRequired,
   loginType: PropTypes.oneOf(["PHONE", "EMAIL"]),
+  debug: PropTypes.bool,
   disabled: PropTypes.bool,
+  display: PropTypes.oneOf(["popup", "modal"]),
+  redirect: PropTypes.string,
   language: PropTypes.string,
   countryCode: PropTypes.string,
   phoneNumber: PropTypes.string,
@@ -93,7 +99,9 @@ AccountKit.propTypes = {
 };
 
 AccountKit.defaultProps = {
+  debug: false,
   disabled: false,
+  display: "popup",
   language: "en_US",
   loginType: "PHONE"
 };
