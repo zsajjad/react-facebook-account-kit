@@ -22,7 +22,7 @@ ReactDOM.render(
       csrf={'csrf token here!'} // Required for security
       countryCode={'default country code'} // eg. +60
       phoneNumber={'default phone number'} // eg. 12345678
-      emailAddress={'default email address'} // eg. me@site.com 
+      emailAddress={'default email address'} // eg. me@site.com
     >
       {p => <button {...p}>Initialize Account Kit</button>}
     </AccountKit>,
@@ -39,12 +39,16 @@ ReactDOM.render(
 
 ## Optional Props
 - ```loginType``` default is ```PHONE```
+- ```debug``` default is ```false```
 - ```disabled``` default is ```false```
+- ```display``` default is ```popup```
 - ```language``` default is ```en_US```
 - ```countryCode``` default country code. default value is ```undefined```
 - ```phoneNumber``` default phone number. default value is ```undefined```
-- ```emailAddress``` default email address. default value is ```undefined```
-*`loginType`* must be set to ```"EMAIL"``` for this to work. 
+- ```emailAddress``` default email address. default value is ```undefined```.
+*`loginType`* must be set to ```"EMAIL"``` for this to work.
+- ```redirect``` redirect URL after email confirmation. default value is ```undefined```.
+*`loginType`* must be set to ```"EMAIL"``` for this to work.
 
 
 ## Dev Server
