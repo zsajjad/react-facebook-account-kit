@@ -1,6 +1,6 @@
 # React Account Kit
 
-[![npm](https://img.shields.io/npm/dm/react-native-text-detector.svg)](https://www.npmjs.com/package/react-native-text-detector)
+[![npm](https://img.shields.io/npm/dm/react-native-text-detector.svg)](https://www.npmjs.com/package/react-facebook-account-kit)
 
 > An [Account Kit](https://developers.facebook.com/docs/accountkit) Component for React
 
