@@ -1,16 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+let ACCOUNT_KIT_INITIALIZED = false;
+
 class AccountKit extends React.Component {
   constructor(props) {
     super(props);
     this.signIn = this.signIn.bind(this);
     this.state = {
-      disabled: false
+      disabled: ACCOUNT_KIT_INITIALIZED,
     };
   }
 
   componentDidMount() {
+    this.mounted = true;
     if (!window.AccountKit) {
       (cb => {
         const tag = document.createElement("script");
@@ -28,6 +31,10 @@ class AccountKit extends React.Component {
     }
   }
 
+  componentWillMount() {
+    this.mounted = false;
+  }
+
   onLoad() {
     const { appId, csrf, version, debug, display, redirect } = this.props;
     window.AccountKit.init({
@@ -39,9 +46,12 @@ class AccountKit extends React.Component {
       redirect,
       fbAppEventsEnabled: false
     });
-    this.setState({
-      disabled: false
-    });
+    ACCOUNT_KIT_INITIALIZED = true;
+    if (this.mounted) {
+      this.setState({
+        disabled: false
+      });  
+    }
   }
 
   signIn() {
