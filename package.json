@@ -1,13 +1,13 @@
 {
   "name": "react-facebook-account-kit",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Account Kit for React",
   "main": "dist/account-kit.js",
   "scripts": {
     "start":
-      "export NODE_ENV=development&& webpack-dev-server --config webpack.config.dev.js",
+      "export NODE_ENV=development && webpack-dev-server --config webpack.config.dev.js",
     "bundle":
-      "export NODE_ENV=production&& webpack -p --config webpack.config.dist.js",
+      "export NODE_ENV=production && webpack -p --config webpack.config.dist.js",
     "lint": "eslint src/ --fix",
     "clean": "rm -rf node_modules"
   },
