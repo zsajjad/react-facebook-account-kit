@@ -1,13 +1,11 @@
 {
   "name": "react-facebook-account-kit",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Account Kit for React",
   "main": "dist/account-kit.js",
   "scripts": {
-    "start":
-      "export NODE_ENV=development && webpack-dev-server --config webpack.config.dev.js",
-    "bundle":
-      "export NODE_ENV=production && webpack -p --config webpack.config.dist.js",
+    "start": "export NODE_ENV=development && webpack-dev-server --config webpack.config.dev.js",
+    "bundle": "export NODE_ENV=production && webpack -p --config webpack.config.dist.js",
     "lint": "eslint src/ --fix",
     "clean": "rm -rf node_modules"
   },
@@ -35,16 +33,16 @@
     "prop-types": "^15.5.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",    
+    "@babel/plugin-transform-react-constant-elements": "^7.0.0",
+    "@babel/plugin-transform-react-inline-elements": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/preset-react": "^7.0.0",
     "autoprefixer": "6.7.7",
-    "babel": "6.23.0",
-    "babel-core": "6.24.1",
-    "babel-eslint": "7.2.2",
-    "babel-loader": "6.4.1",
-    "babel-plugin-transform-react-constant-elements": "6.23.0",
-    "babel-plugin-transform-react-inline-elements": "6.22.0",
+    "babel-eslint": "^9.0.0",
+    "babel-loader": "^8.0.0",
     "babel-plugin-transform-react-remove-prop-types": "0.4.1",
-    "babel-preset-es2015": "6.24.0",
-    "babel-preset-react": "6.23.0",
     "chai": "3.5.0",
     "chai-jquery": "2.0.0",
     "eslint": "3.19.0",

@@ -3,34 +3,35 @@
     "development": {
       "presets": [
         [
-          "es2015",
+          "@babel/preset-env",
           {
             "modules": false
           }
         ],
-        "react"
+        "@babel/preset-react"
       ]
     },
     "test": {
       "presets": [
-        "es2015",
-        "react"
+        "@babel/preset-env",
+        "@babel/preset-react"
       ]
     },
     "production": {
       "presets": [
         [
-          "es2015",
+          "@babel/preset-env",
           {
             "modules": false
           }
         ],
-        "react"
+        "@babel/preset-react"
       ],
       "plugins": [
         "transform-react-remove-prop-types",
-        "transform-react-constant-elements",
-        "transform-react-inline-elements"
+        "@babel/plugin-proposal-class-properties",
+        "@babel/plugin-transform-react-constant-elements",
+        "@babel/plugin-transform-react-inline-elements"
       ]
     }
   }

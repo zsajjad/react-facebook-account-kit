@@ -1,33 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-let ACCOUNT_KIT_INITIALIZED = false;
+function initializeAccountKit(props, callback) {
+  ((cb) => {
+    const tag = document.createElement('script');
+    tag.setAttribute(
+      'src',
+      `https://sdk.accountkit.com/${props.language}/sdk.js`,
+    );
+    tag.setAttribute('id', 'account-kit');
+    tag.setAttribute('type', 'text/javascript');
+    tag.onload = cb;
+    document.head.appendChild(tag);
+  })(() => {
+    window.AccountKit_OnInteractive = function () {
+      const {
+        appId, csrf, version, debug, display, redirect
+      } = props;
+      window.AccountKit.init({
+        appId,
+        state: csrf,
+        version,
+        debug,
+        display,
+        redirect,
+        fbAppEventsEnabled: false,
+      });
+      callback();
+    };
+  });
+}
 
 class AccountKit extends React.Component {
-  constructor(props) {
-    super(props);
-    this.signIn = this.signIn.bind(this);
-    this.state = {
-      disabled: ACCOUNT_KIT_INITIALIZED,
-    };
-  }
+  state = {
+    initialized: !!window.AccountKit,
+  };
 
   componentDidMount() {
     this.mounted = true;
-    if (!window.AccountKit) {
-      ((cb) => {
-        const tag = document.createElement('script');
-        tag.setAttribute(
-          'src',
-          `https://sdk.accountkit.com/${this.props.language}/sdk.js`
-        );
-        tag.setAttribute('id', 'account-kit');
-        tag.setAttribute('type', 'text/javascript');
-        tag.onload = cb;
-        document.head.appendChild(tag);
-      })(() => {
-        window.AccountKit_OnInteractive = this.onLoad.bind(this);
-      });
+    if (!this.state.initialized) {
+      initializeAccountKit({
+        appId: this.props.appId,
+        csrf: this.props.csrf,
+        version: this.props.version,
+        debug: this.props.debug,
+        display: this.props.display,
+        redirect: this.props.redirect,
+        language: this.props.language,
+      }, this.onLoad);
     }
   }
 
@@ -35,26 +55,15 @@ class AccountKit extends React.Component {
     this.mounted = false;
   }
 
-  onLoad() {
-    const { appId, csrf, version, debug, display, redirect } = this.props;
-    window.AccountKit.init({
-      appId,
-      state: csrf,
-      version,
-      debug,
-      display,
-      redirect,
-      fbAppEventsEnabled: false
-    });
-    ACCOUNT_KIT_INITIALIZED = true;
+  onLoad = () => {
     if (this.mounted) {
       this.setState({
-        disabled: false
+        initialized: true,
       });
     }
-  }
+  };
 
-  signIn() {
+  signIn = () => {
     if (this.state.disabled) {
       return;
     }
@@ -81,12 +90,13 @@ class AccountKit extends React.Component {
   }
 
   render() {
-    const disabled = this.state.disabled || this.props.disabled;
+    const disabled = !this.state.initialized || this.props.disabled;
+    // @ts-ignore
     return this.props.children({
       onClick: () => {
         this.signIn();
       },
-      disabled
+      disabled,
     });
   }
 }
@@ -105,7 +115,7 @@ AccountKit.propTypes = {
   language: PropTypes.string,
   countryCode: PropTypes.string,
   phoneNumber: PropTypes.string,
-  emailAddress: PropTypes.string
+  emailAddress: PropTypes.string,
 };
 
 AccountKit.defaultProps = {
@@ -113,7 +123,7 @@ AccountKit.defaultProps = {
   disabled: false,
   display: 'popup',
   language: 'en_US',
-  loginType: 'PHONE'
+  loginType: 'PHONE',
 };
 
 export default AccountKit;
