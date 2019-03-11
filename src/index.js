@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 let ACCOUNT_KIT_INITIALIZED = false;
 
@@ -15,14 +15,14 @@ class AccountKit extends React.Component {
   componentDidMount() {
     this.mounted = true;
     if (!window.AccountKit) {
-      (cb => {
-        const tag = document.createElement("script");
+      ((cb) => {
+        const tag = document.createElement('script');
         tag.setAttribute(
-          "src",
+          'src',
           `https://sdk.accountkit.com/${this.props.language}/sdk.js`
         );
-        tag.setAttribute("id", "account-kit");
-        tag.setAttribute("type", "text/javascript");
+        tag.setAttribute('id', 'account-kit');
+        tag.setAttribute('type', 'text/javascript');
         tag.onload = cb;
         document.head.appendChild(tag);
       })(() => {
@@ -31,7 +31,7 @@ class AccountKit extends React.Component {
     }
   }
 
-  componentWillMount() {
+  componentWillUnmount() {
     this.mounted = false;
   }
 
@@ -50,7 +50,7 @@ class AccountKit extends React.Component {
     if (this.mounted) {
       this.setState({
         disabled: false
-      });  
+      });
     }
   }
 
@@ -71,9 +71,9 @@ class AccountKit extends React.Component {
       options.countryCode = countryCode;
     }
 
-    if (loginType === "PHONE" && phoneNumber) {
+    if (loginType === 'PHONE' && phoneNumber) {
       options.phoneNumber = phoneNumber;
-    } else if (loginType === "EMAIL" && emailAddress) {
+    } else if (loginType === 'EMAIL' && emailAddress) {
       options.emailAddress = emailAddress;
     }
 
@@ -97,10 +97,10 @@ AccountKit.propTypes = {
   version: PropTypes.string.isRequired,
   children: PropTypes.func.isRequired,
   onResponse: PropTypes.func.isRequired,
-  loginType: PropTypes.oneOf(["PHONE", "EMAIL"]),
+  loginType: PropTypes.oneOf(['PHONE', 'EMAIL']),
   debug: PropTypes.bool,
   disabled: PropTypes.bool,
-  display: PropTypes.oneOf(["popup", "modal"]),
+  display: PropTypes.oneOf(['popup', 'modal']),
   redirect: PropTypes.string,
   language: PropTypes.string,
   countryCode: PropTypes.string,
@@ -111,9 +111,9 @@ AccountKit.propTypes = {
 AccountKit.defaultProps = {
   debug: false,
   disabled: false,
-  display: "popup",
-  language: "en_US",
-  loginType: "PHONE"
+  display: 'popup',
+  language: 'en_US',
+  loginType: 'PHONE'
 };
 
 export default AccountKit;
