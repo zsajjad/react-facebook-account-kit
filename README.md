@@ -44,7 +44,7 @@ ReactDOM.render(
 - ```loginType``` default is ```PHONE```
 - ```debug``` default is ```false```
 - ```disabled``` default is ```false```
-- ```display``` default is ```popup```
+- ```display``` can be ```popup```or ```modal```. default value is ```popup```
 - ```language``` default is ```en_US```
 - ```countryCode``` default country code. default value is ```undefined```
 - ```phoneNumber``` default phone number. default value is ```undefined```
@@ -53,6 +53,7 @@ ReactDOM.render(
 - ```redirect``` redirect URL after email confirmation. default value is ```undefined```.
 *`loginType`* must be set to ```"EMAIL"``` for this to work.
 
+Reference: https://developers.facebook.com/docs/accountkit/webjs/reference
 
 ## Dev Server
 ```
