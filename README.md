@@ -52,6 +52,7 @@ ReactDOM.render(
 *`loginType`* must be set to ```"EMAIL"``` for this to work.
 - ```redirect``` redirect URL after email confirmation. default value is ```undefined```.
 *`loginType`* must be set to ```"EMAIL"``` for this to work.
+- ```beforeSignIn``` Function that will be called immediately before calling ```signIn```. 
 
 Reference: https://developers.facebook.com/docs/accountkit/webjs/reference
 

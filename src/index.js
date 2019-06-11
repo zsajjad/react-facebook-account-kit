@@ -91,9 +91,13 @@ class AccountKit extends React.Component {
 
   render() {
     const disabled = !this.state.initialized || this.props.disabled;
+    const { beforeSignIn } = this.props;
     // @ts-ignore
     return this.props.children({
       onClick: () => {
+        if (beforeSignIn) {
+          beforeSignIn();
+        }
         this.signIn();
       },
       disabled,
@@ -116,6 +120,7 @@ AccountKit.propTypes = {
   countryCode: PropTypes.string,
   phoneNumber: PropTypes.string,
   emailAddress: PropTypes.string,
+  beforeSignIn: PropTypes.func,
 };
 
 AccountKit.defaultProps = {
